@@ -20,6 +20,9 @@
 	use pocketmine\level\particle\BubbleParticle;
 	use pocketmine\level\particle\PortalParticle;
 	use pocketmine\level\particle\EnchantParticle;
+        use pocketmine\level\particle\EntityFlameParticle;
+        use pocketmine\level\particle\RedstoneParticle;
+        use pocketmine\level\particle\CriticalParticle;
 
 	use pocketmine\command\Command;
 	use pocketmine\command\CommandSender;
@@ -200,6 +203,16 @@
 		private function getParticle($particle, $player) {
 			$vector3 = new Vector3($player->getX() + $this->randomFloat(), $player->getY() + $this->randomFloat(0.25, 1.5), $player->getZ() + $this->randomFloat());
 			switch($particle) {
+				case 'critical':
+						$particle = new CriticalParticle($vector3);
+                                        break;
+				case 'entityflame':
+						$particle = new EntityFlameParticle($vector3);
+                                        break;
+			        case 'redstone':
+						$particle = new RedstoneParticle($vector3);
+                                        break;
+					
 				case 'flame':
 						$particle = new FlameParticle($vector3);
 					break;
